@@ -1,0 +1,182 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    background-color: #fdfd96;
+    /* Pastel yellow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Courgette', serif;
+}
+
+.flower-container,
+.hearts-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.flower {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px;
+    opacity: 0;
+    position: absolute;
+    animation: sprout 2s ease-in-out forwards, sway 4s ease-in-out infinite;
+}
+
+.heart {
+    width: 15px;
+    height: 15px;
+    background-color: #ff6f61;
+    /* Pastel red */
+    clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+    position: absolute;
+    opacity: 0;
+    animation: float 3s ease-in-out infinite, fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes sprout {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: translateX(-5px) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateX(5px) rotate(2deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.image-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.valentine-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ff6f61;
+    /* Pastel red border */
+    object-fit: cover;
+    animation: float 3s ease-in-out infinite;
+}
+
+.message-container,
+.letter-container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Opaque white */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: float 3s ease-in-out infinite;
+    margin: 20px;
+}
+
+.letter-container {
+    max-width: 500px;
+    text-align: left;
+}
+
+.message-container p,
+.letter-container p {
+    margin: 0;
+    font-size: 20px;
+    color: #B39EB5;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .message-container,
+    .letter-container {
+        width: 90%;
+        /* Adjust width for smaller screens */
+        padding: 15px;
+        /* Slightly reduce padding */
+    }
+
+    .valentine-image {
+        width: 120px;
+        height: 120px;
+        /* Slightly smaller image for mobile */
+    }
+
+    .message-container p,
+    .letter-container p {
+        font-size: 20px;
+        /* Slightly smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .message-container,
+    .letter-container {
+        width: 95%;
+        /* Adjust width for very small screens */
+        padding: 10px;
+        /* Further reduce padding */
+    }
+
+    .valentine-image {
+        width: 100px;
+        height: 100px;
+        /* Even smaller image for very small screens */
+    }
+
+    .message-container p,
+    .letter-container p {
+        font-size: 18px;
+        /* Smaller font size for very small screens */
+    }
+}
